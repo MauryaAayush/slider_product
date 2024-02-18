@@ -104,24 +104,24 @@ class _Slider_listState extends State<Slider_list> {
       child: ListTile(
         leading: Text(
           '${data[index]['id']}',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
           ),
         ),
         title: Text(
           data[index]['name'],
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
           ),
         ),
         subtitle: Text(
           data[index]['title'],
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 17, color: Colors.grey, fontWeight: FontWeight.w500),
         ),
         trailing: Text(
           'Rs.${data[index]['price']}',
-          style: TextStyle(fontSize: 18, color: Colors.grey),
+          style: const TextStyle(fontSize: 18, color: Colors.grey),
         ),
       ),
     );
