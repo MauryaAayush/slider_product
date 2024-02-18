@@ -18,9 +18,26 @@ class Slider_list extends StatefulWidget {
   State<Slider_list> createState() => _Slider_listState();
 }
 
-double amount = 0;
 
 class _Slider_listState extends State<Slider_list> {
+
+  double amount = 0;
+
+  List selectedProducts = [];
+
+ int Totalprice ()
+ {
+   int total = 0;
+
+  for(var item in selectedProducts)
+    {
+    int price = item['price'];
+    total = total + price;
+    }
+   return total;
+
+ }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -48,7 +65,7 @@ class _Slider_listState extends State<Slider_list> {
           ],
         ),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 40, 10, 0),
+          padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -60,6 +77,9 @@ class _Slider_listState extends State<Slider_list> {
                 activeColor: Colors.blueAccent,
                 onChanged: (value) {
                   amount = value;
+
+                  selectedProducts = data.where((item) => item['price'] < amount).toList();
+
                   setState(() {});
                 },
               ),
@@ -76,7 +96,80 @@ class _Slider_listState extends State<Slider_list> {
                           data.length,
                           (index) => (data[index]['price'] < amount)
                               ? Our_Product(index)
-                              : Container()))),
+                              : Container())
+                  )
+              ),
+
+              Container(
+                  height: height * 0.15,
+                  width: width,
+                  decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40))),
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 28, horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          // color: Colors.red,
+                          height: 50,
+                          width: 100,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Total price',
+                                style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                              Text(
+                                '\$${Totalprice()}',
+                                style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 40),
+                          height: height * 0.068,
+                          width: width * 0.59,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(30))),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Checkout',
+                                style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w700),
+
+                              ),
+                              Icon(
+                                Icons.arrow_forward_rounded,
+                                color: Colors.black,
+                                size: 25,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ))
             ],
           ),
         ),
@@ -85,43 +178,48 @@ class _Slider_listState extends State<Slider_list> {
   }
 
   Widget Our_Product(int index) {
-    return Container(
-      alignment: Alignment.center,
-      margin: const EdgeInsets.symmetric(
-        vertical: 10,
-      ),
-      height: 90,
-      width: 400,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                offset: const Offset(0, 5),
-                blurRadius: 3)
-          ]),
-      child: ListTile(
-        leading: Text(
-          '${data[index]['id']}',
-          style: const TextStyle(
-            fontSize: 18,
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: 8),
+      child: Container(
+        alignment: Alignment.center,
+        margin: const EdgeInsets.symmetric(
+          vertical: 10,
+        ),
+        height: 90,
+        width: 400,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  offset: const Offset(0, 5),
+                  blurRadius: 3)
+            ]),
+        child: ListTile(
+          leading: Text(
+            '${data[index]['id']}',
+            style: const TextStyle(
+              fontSize: 18,
+            ),
           ),
-        ),
-        title: Text(
-          data[index]['name'],
-          style: const TextStyle(
-            fontSize: 20,
+          title: Text(
+            data[index]['name'],
+            style: const TextStyle(
+              fontSize: 20,
+            ),
           ),
-        ),
-        subtitle: Text(
-          data[index]['title'],
-          style: const TextStyle(
-              fontSize: 17, color: Colors.grey, fontWeight: FontWeight.w500),
-        ),
-        trailing: Text(
-          'Rs.${data[index]['price']}',
-          style: const TextStyle(fontSize: 18, color: Colors.grey),
+          subtitle: Text(
+            data[index]['title'],
+            style: const TextStyle(
+                fontSize: 17,
+                color: Colors.grey,
+                fontWeight: FontWeight.w500),
+          ),
+          trailing: Text(
+            'Rs.${data[index]['price']}',
+            style: const TextStyle(fontSize: 18, color: Colors.grey),
+          ),
         ),
       ),
     );
