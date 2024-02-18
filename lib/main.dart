@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:slider_product/utils/ProductList.dart';
 
 void main()
 {
@@ -58,36 +59,74 @@ class _Slider_listState extends State<Slider_list> {
               Slider(
                 min: 100,
                   max: 80000,
+                  divisions: 100,
                   value: amount,
                   onChanged: (value) {
+                    amount = value;
+                    setState(() {
 
+                    });
                   },),
               
-              Text('All Product < Rs. 30000',
+              Text('All Product < Rs. ${amount.toStringAsFixed(0)}',
               style: TextStyle(
                  fontSize: 20,
                 fontWeight: FontWeight.w600
               ),),
               SizedBox(height:
                 20,),
-              Container(
-                  height: 90,
-                width: 400,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      offset: const Offset(0, 5),
-                      blurRadius: 3
-                    )
-                  ]
-                ),
-              ),
+
+              Expanded(
+                  child: ListView(
+                    children:List.generate(data.length, (index) => (data[index]['price'] < amount) ? Our_Product(index) : Container())
+                  )),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget Our_Product(int index)
+  {
+    return Container(
+      alignment: Alignment.center,
+      margin: EdgeInsets.symmetric(
+        vertical: 10,
+      ),
+      height: 90,
+      width: 400,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                offset: const Offset(0, 5),
+                blurRadius: 3
+            )
+          ]
+      ),
+      child: ListTile(
+        leading: Text(
+          '${data[index]['id']}',style: TextStyle(
+          fontSize: 18,
+        ),),
+        title: Text(data[index]['name'],style: TextStyle(
+          fontSize: 20,
+        ),),
+
+        subtitle: Text(data[index]['title'],style: TextStyle(
+          fontSize: 15,
+          color: Colors.grey,
+          fontWeight: FontWeight.w500
+        ),),
+        trailing: Text('Rs.${data[index]['price']}' ,style: TextStyle(
+          fontSize: 18,
+          color: Colors.grey
+
+        ),),
+
       ),
     );
   }

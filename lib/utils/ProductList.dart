@@ -9,7 +9,7 @@ List data = [
     'id' : 2,
     'name' : 'Boat Smart Watch',
     'title' : 'With gold bracelet',
-    'price' : 1500,
+    'price' : 15000,
   },
   {
     'id' : 3,
