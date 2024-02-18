@@ -65,9 +65,9 @@ class _Slider_listState extends State<Slider_list> {
               ),
               Text(
                 'All Product < Rs. ${amount.toStringAsFixed(0)}',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Expanded(
@@ -87,14 +87,14 @@ class _Slider_listState extends State<Slider_list> {
   Widget Our_Product(int index) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         vertical: 10,
       ),
       height: 90,
       width: 400,
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(5)),
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
           boxShadow: [
             BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
