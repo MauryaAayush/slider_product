@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 void main()
 {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Color(0xFF196EB2),
+      statusBarColor: Color(0xFF085EA1),
       ));
  runApp(const Slider_list());
 }
@@ -23,12 +23,24 @@ class _Slider_listState extends State<Slider_list> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.blueAccent,
           title: Text("Product List",style: TextStyle(
-            color: Colors.blueAccent,
+            color: Colors.white,
+            fontWeight: FontWeight.w500
           ),),
+          centerTitle: true,
+          actions: [
+            Icon(
+              Icons.apps,
+              color: Colors.white,
+              size: 28,
+            )
+          ],
 
         ),
-        body: Container(),
+        body: Container(
+
+        ),
       ),
     );
   }
