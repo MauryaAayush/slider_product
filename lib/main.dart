@@ -117,7 +117,7 @@ class _Slider_listState extends State<Slider_list> {
         ),),
 
         subtitle: Text(data[index]['title'],style: TextStyle(
-          fontSize: 15,
+          fontSize: 17,
           color: Colors.grey,
           fontWeight: FontWeight.w500
         ),),
