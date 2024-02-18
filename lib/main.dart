@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,9 +23,14 @@ double amount = 500;
 class _Slider_listState extends State<Slider_list> {
   @override
   Widget build(BuildContext context) {
+
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Color(0xFFFAFAFA),
         appBar: AppBar(
           backgroundColor: Colors.blueAccent,
 
@@ -43,7 +50,7 @@ class _Slider_listState extends State<Slider_list> {
 
         ),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
+          padding: const EdgeInsets.fromLTRB(10, 40, 10, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -56,14 +63,26 @@ class _Slider_listState extends State<Slider_list> {
 
                   },),
               
-              Text('All Product < Rs. 30000'),
+              Text('All Product < Rs. 30000',
+              style: TextStyle(
+                 fontSize: 20,
+                fontWeight: FontWeight.w600
+              ),),
               SizedBox(height:
                 20,),
               Container(
-                  height: 200,
-                width: 200,
+                  height: 90,
+                width: 400,
                 decoration: BoxDecoration(
-                  color: Colors.red
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      offset: const Offset(0, 5),
+                      blurRadius: 3
+                    )
+                  ]
                 ),
               ),
             ],
