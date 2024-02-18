@@ -9,7 +9,7 @@ List data = [
     'id' : 2,
     'name' : 'Boat Smart Watch',
     'title' : 'With gold bracelet',
-    'price' : 15000,
+    'price' : 1500,
   },
   {
     'id' : 3,
@@ -27,31 +27,31 @@ List data = [
     'id' : 5,
     'name' : 'casio',
     'title' : 'Both mens & Womens',
-    'price' : 2000,
+    'price' : 9000,
   },
   {
     'id' : 6,
     'name' : 'Timex',
     'title' : 'leather finish',
-    'price' : 1700,
+    'price' : 5000,
   },
   {
     'id' : 7,
     'name' : 'Titan',
     'title' : 'Silver look',
-    'price' : 5500,
+    'price' : 9500,
   },
   {
     'id' : 8,
     'name' : 'Fastrack',
     'title' : 'Stainless steel',
-    'price' : 3500,
+    'price' : 10000,
   },
   {
     'id' : 9,
     'name' : 'Fossil',
     'title' : 'wearable',
-    'price' : 1500,
+    'price' : 8000,
   },
   {
     'id' : 10,
@@ -69,7 +69,7 @@ List data = [
     'id' : 12,
     'name' : 'Timex',
     'title' : 'Best of mens',
-    'price' : 800,
+    'price' : 2500,
   },
   {
     'id' : 13,
@@ -93,13 +93,13 @@ List data = [
     'id' : 16,
     'name' : 'fastrack',
     'title' : 'Sport',
-    'price' : 600,
+    'price' : 1800,
   },
   {
     'id' : 17,
     'name' : 'Helix',
     'title' : 'black in color',
-    'price' : 1500,
+    'price' : 4500,
   },
   {
     'id' : 18,
@@ -111,13 +111,13 @@ List data = [
     'id' : 19,
     'name' : 'Noice',
     'title' : 'best for you',
-    'price' : 850,
+    'price' : 6500,
   },
   {
     'id' : 20,
     'name' : 'Boalt',
     'title' : 'Smart watch',
-    'price' : 1500,
+    'price' : 3500,
   },
 
 ];

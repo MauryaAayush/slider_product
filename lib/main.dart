@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:slider_product/utils/ProductList.dart';
 
-void main()
-{
+void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Color(0xFF085EA1),
-      ));
- runApp(const Slider_list());
+    statusBarColor: Color(0xFF085EA1),
+  ));
+  runApp(const Slider_list());
 }
 
 class Slider_list extends StatefulWidget {
@@ -19,12 +18,11 @@ class Slider_list extends StatefulWidget {
   State<Slider_list> createState() => _Slider_listState();
 }
 
-double amount = 500;
+double amount = 0;
 
 class _Slider_listState extends State<Slider_list> {
   @override
   Widget build(BuildContext context) {
-
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -34,12 +32,12 @@ class _Slider_listState extends State<Slider_list> {
         backgroundColor: Color(0xFFFAFAFA),
         appBar: AppBar(
           backgroundColor: Colors.blueAccent,
-
-          title: Text("Product List",style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w500
-          ),),
-          elevation: 10,shadowColor: Colors.black,
+          title: Text(
+            "Product List",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+          ),
+          elevation: 10,
+          shadowColor: Colors.black,
           centerTitle: true,
           actions: [
             Icon(
@@ -48,38 +46,37 @@ class _Slider_listState extends State<Slider_list> {
               size: 28,
             )
           ],
-
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(10, 40, 10, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-
               Slider(
-                min: 100,
-                  max: 80000,
-                  divisions: 100,
-                  value: amount,
-                  onChanged: (value) {
-                    amount = value;
-                    setState(() {
-
-                    });
-                  },),
-              
-              Text('All Product < Rs. ${amount.toStringAsFixed(0)}',
-              style: TextStyle(
-                 fontSize: 20,
-                fontWeight: FontWeight.w600
-              ),),
-              SizedBox(height:
-                20,),
-
+                min: 0,
+                max: 10000,
+                value: amount,
+                divisions: 100,
+                activeColor: Colors.blueAccent,
+                onChanged: (value) {
+                  amount = value;
+                  setState(() {});
+                },
+              ),
+              Text(
+                'All Product < Rs. ${amount.toStringAsFixed(0)}',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               Expanded(
                   child: ListView(
-                    children:List.generate(data.length, (index) => (data[index]['price'] < amount) ? Our_Product(index) : Container())
-                  )),
+                      children: List.generate(
+                          data.length,
+                          (index) => (data[index]['price'] < amount)
+                              ? Our_Product(index)
+                              : Container()))),
             ],
           ),
         ),
@@ -87,8 +84,7 @@ class _Slider_listState extends State<Slider_list> {
     );
   }
 
-  Widget Our_Product(int index)
-  {
+  Widget Our_Product(int index) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.symmetric(
@@ -103,30 +99,30 @@ class _Slider_listState extends State<Slider_list> {
             BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 offset: const Offset(0, 5),
-                blurRadius: 3
-            )
-          ]
-      ),
+                blurRadius: 3)
+          ]),
       child: ListTile(
         leading: Text(
-          '${data[index]['id']}',style: TextStyle(
-          fontSize: 18,
-        ),),
-        title: Text(data[index]['name'],style: TextStyle(
-          fontSize: 20,
-        ),),
-
-        subtitle: Text(data[index]['title'],style: TextStyle(
-          fontSize: 17,
-          color: Colors.grey,
-          fontWeight: FontWeight.w500
-        ),),
-        trailing: Text('Rs.${data[index]['price']}' ,style: TextStyle(
-          fontSize: 18,
-          color: Colors.grey
-
-        ),),
-
+          '${data[index]['id']}',
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
+        title: Text(
+          data[index]['name'],
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+        subtitle: Text(
+          data[index]['title'],
+          style: TextStyle(
+              fontSize: 17, color: Colors.grey, fontWeight: FontWeight.w500),
+        ),
+        trailing: Text(
+          'Rs.${data[index]['price']}',
+          style: TextStyle(fontSize: 18, color: Colors.grey),
+        ),
       ),
     );
   }
