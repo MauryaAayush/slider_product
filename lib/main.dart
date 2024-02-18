@@ -29,17 +29,17 @@ class _Slider_listState extends State<Slider_list> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xFFFAFAFA),
+        backgroundColor: const Color(0xFFFAFAFA),
         appBar: AppBar(
           backgroundColor: Colors.blueAccent,
-          title: Text(
+          title: const Text(
             "Product List",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
           ),
           elevation: 10,
           shadowColor: Colors.black,
           centerTitle: true,
-          actions: [
+          actions: const [
             Icon(
               Icons.apps,
               color: Colors.white,
